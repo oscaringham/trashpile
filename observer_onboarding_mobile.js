@@ -32,6 +32,15 @@ function goLast() {
 nextButton?.addEventListener('click', goNext);
 skipButton?.addEventListener('click', goLast);
 
+dots.forEach((dot) => {
+  dot.addEventListener('click', () => {
+    const index = Number(dot.dataset.slideIndex);
+    if (!Number.isNaN(index)) {
+      setSlide(index);
+    }
+  });
+});
+
 newsletterCards.forEach((card) => {
   card.addEventListener('click', () => {
     const selected = card.classList.toggle('is-selected');
