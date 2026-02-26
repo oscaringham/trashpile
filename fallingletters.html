@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falling Character PNG Physics</title>
+  <style>
+    :root {
+      --bg-image: url("./IMG_9B936D90F99D-1.jpeg");
+      --panel: rgba(255, 255, 255, 0.9);
+      --text: #181818;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--text);
+    }
+
+    #ui {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+      padding: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: none;
+    }
+
+    #charInput {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      font-size: 18px;
+      padding: 10px 12px;
+      border-radius: 0;
+      text-align: center;
+      background-color: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.35);
+    }
+
+    #charInput:focus {
+      outline: none;
+      border-color: #f99a0a;
+      box-shadow: 0 0 0 2px rgba(249, 154, 10, 0.2);
+    }
+
+    #hint {
+      margin: 8px 0 0;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    #world {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #world canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui">
+    <input id="charInput" type="text" maxlength="1" placeholder="Type one character..." autocomplete="off" />
+    <p id="hint">Each typed character becomes a PNG and drops with physics.</p>
+  </div>
+  <div id="world"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
+  <script>
+    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
+
+    const worldEl = document.getElementById("world");
+    const inputEl = document.getElementById("charInput");
+
+    const engine = Engine.create();
+    engine.world.gravity.y = 1.5;
+
+    const render = Render.create({
+      element: worldEl,
+      engine,
+      options: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        wireframes: false,
+        background: "transparent"
+      }
+    });
+
+    Render.run(render);
+    const runner = Runner.create();
+    Runner.run(runner, engine);
+
+    const mouse = Mouse.create(render.canvas);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: { visible: false }
+      }
+    });
+    Composite.add(engine.world, mouseConstraint);
+    render.mouse = mouse;
+
+    let bounds = [];
+
+    function buildBounds() {
+      if (bounds.length) {
+        Composite.remove(engine.world, bounds);
+      }
+
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const t = 80;
+
+      bounds = [
+        Bodies.rectangle(w / 2, h + t / 2, w, t, { isStatic: true, restitution: 0.8 }),
+        Bodies.rectangle(-t / 2, h / 2, t, h * 2, { isStatic: true, restitution: 0.8 }),
+        Bodies.rectangle(w + t / 2, h / 2, t, h * 2, { isStatic: true, restitution: 0.8 })
+      ];
+
+      Composite.add(engine.world, bounds);
+    }
+
+    function createCharacterPng(char) {
+      const size = 96;
+      const c = document.createElement("canvas");
+      c.width = size;
+      c.height = size;
+      const ctx = c.getContext("2d");
+
+      ctx.clearRect(0, 0, size, size);
+      ctx.fillStyle = "#f99a0a";
+      ctx.strokeStyle = "#000000";
+      ctx.lineWidth = 3;
+      ctx.font = "bold 96px Georgia, serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.strokeText(char, size / 2, size / 2 + 3);
+      ctx.fillText(char, size / 2, size / 2 + 3);
+
+      return c.toDataURL("image/png");
+    }
+
+    function dropCharacter(char) {
+      const texture = createCharacterPng(char);
+      const size = 56;
+      const x = 40 + Math.random() * (window.innerWidth - 80);
+
+      const body = Bodies.rectangle(x, -40, size, size, {
+        restitution: 0.72,
+        friction: 0.15,
+        frictionAir: 0.006,
+        density: 0.0025,
+        render: {
+          sprite: {
+            texture,
+            xScale: size / 96,
+            yScale: size / 96
+          }
+        }
+      });
+
+      Composite.add(engine.world, body);
+    }
+
+    inputEl.addEventListener("input", (event) => {
+      const value = event.target.value;
+      if (!value) {
+        return;
+      }
+      dropCharacter(value[0]);
+      event.target.value = "";
+    });
+
+    window.addEventListener("resize", () => {
+      render.canvas.width = window.innerWidth;
+      render.canvas.height = window.innerHeight;
+      render.options.width = window.innerWidth;
+      render.options.height = window.innerHeight;
+      buildBounds();
+    });
+
+    buildBounds();
+    inputEl.focus();
+  </script>
+</body>
+</html>

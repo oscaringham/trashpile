@@ -1,207 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Falling Character PNG Physics</title>
-  <style>
-    :root {
-      --bg-image: url("./IMG_9B936D90F99D-1.jpeg");
-      --panel: rgba(255, 255, 255, 0.9);
-      --text: #181818;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-      background-image: var(--bg-image);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: var(--text);
-    }
-
-    #ui {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      border-radius: 0;
-      padding: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      width: 100%;
-      max-width: none;
-    }
-
-    #charInput {
-      display: block;
-      width: 100%;
-      margin: 0 auto;
-      font-size: 18px;
-      padding: 10px 12px;
-      border-radius: 0;
-      text-align: center;
-      background-color: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.35);
-    }
-
-    #charInput:focus {
-      outline: none;
-      border-color: #f99a0a;
-      box-shadow: 0 0 0 2px rgba(249, 154, 10, 0.2);
-    }
-
-    #hint {
-      margin: 8px 0 0;
-      font-size: 13px;
-      opacity: 0.8;
-    }
-
-    #world {
-      width: 100vw;
-      height: 100vh;
-    }
-
-    #world canvas {
-      display: block;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oscar Ingham Design Projects</title>
+  <link rel="stylesheet" href="oscaringhamdesign.css" />
 </head>
 <body>
-  <div id="ui">
-    <input id="charInput" type="text" maxlength="1" placeholder="Type one character..." autocomplete="off" />
-    <p id="hint">Each typed character becomes a PNG and drops with physics.</p>
+  <div class="top-bar">
+    <header class="page-title">O.I. Design</header>
+    <button class="primary-cta" type="button">Contact</button>
   </div>
-  <div id="world"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
-  <script>
-    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
+  <aside class="timeline" aria-hidden="true">
+    <span class="timeline-line"></span>
+    <span class="timeline-pointer" id="timelinePointer"></span>
+  </aside>
 
-    const worldEl = document.getElementById("world");
-    const inputEl = document.getElementById("charInput");
+  <main class="projects" id="projectsList">
+    <section class="project-item is-active" data-panel-id="project-panel-1">
+      <h2 class="project-title">01. Overview</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-2">
+      <h2 class="project-title">02. The Observer App and Website</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-3">
+      <h2 class="project-title">03. Tortoise audio app</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-4">
+      <h2 class="project-title">04. The Westminster Accounts</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-5">
+      <h2 class="project-title">05. The Peer Review</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-6">
+      <h2 class="project-title">06. Observer to Tortoise transition</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-7">
+      <h2 class="project-title">07. Observer motion design and brand</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-8">
+      <h2 class="project-title">08. Puzzles</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="puzzles.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-9">
+      <h2 class="project-title">09. Passion Fruit</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+    <section class="project-item" data-panel-id="project-panel-10">
+      <h2 class="project-title">10. Five Points</h2>
+      <p class="project-subtitle">Short placeholder subtitle for this selected project.</p>
+      <img class="project-badge" src="peer-review-gif-small.gif" alt="" />
+    </section>
+  </main>
 
-    const engine = Engine.create();
-    engine.world.gravity.y = 1.5;
+  <div hidden>
+    <template id="project-panel-1">
+      <h3 class="panel-content-title">Conceptual Interface Study for Quiet Cities</h3>
+      <p class="panel-content-subtitle">Initial exploration and interaction principles.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Conceptual Interface Study for Quiet Cities placeholder image" />
+      <p class="panel-content-body">Placeholder body copy describing the project intent, process notes, and visual direction. This content block can be replaced with full case-study details later.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Conceptual Interface Study for Quiet Cities placeholder image" />
+      <p class="panel-content-body">Placeholder body copy describing the project intent, process notes, and visual direction. This content block can be replaced with full case-study details later.</p>
+    </template>
+    <template id="project-panel-2">
+      <h3 class="panel-content-title">Adaptive Branding System for Coastal Startups</h3>
+      <p class="panel-content-subtitle">Scalable identity system for digital products.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Adaptive Branding System for Coastal Startups placeholder image" />
+      <p class="panel-content-body">Placeholder body copy describing how the brand toolkit adapts across touchpoints, from social channels to product UI and printed materials.</p>
+    </template>
+    <template id="project-panel-3">
+      <h3 class="panel-content-title">Experimental Poster Series Exploring Future Archives</h3>
+      <p class="panel-content-subtitle">Graphic studies in format and pacing.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Experimental Poster Series Exploring Future Archives placeholder image" />
+      <p class="panel-content-body">Placeholder body copy outlining concept development, type experiments, and layout iterations that shaped the final visual language.</p>
+    </template>
+    <template id="project-panel-4">
+      <h3 class="panel-content-title">Interactive Landing Page for Everyday Objects</h3>
+      <p class="panel-content-subtitle">Prototype for narrative-driven browsing.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Interactive Landing Page for Everyday Objects placeholder image" />
+      <p class="panel-content-body">Placeholder body copy about structure, component behavior, and content hierarchy used to communicate product stories on a single page.</p>
+    </template>
+    <template id="project-panel-5">
+      <h3 class="panel-content-title">Minimal Editorial Layout for Digital Journals</h3>
+      <p class="panel-content-subtitle">Reading-first approach for long-form content.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Minimal Editorial Layout for Digital Journals placeholder image" />
+      <p class="panel-content-body">Placeholder body copy covering typographic rhythm, spacing strategy, and article templates that support clear and consistent publishing.</p>
+    </template>
+    <template id="project-panel-6">
+      <h3 class="panel-content-title">Data Storytelling Mockup for Local Transit</h3>
+      <p class="panel-content-subtitle">Information design for civic communication.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Data Storytelling Mockup for Local Transit placeholder image" />
+      <p class="panel-content-body">Placeholder body copy summarizing chart direction, annotation style, and narrative sequencing that make route data easier to understand.</p>
+    </template>
+    <template id="project-panel-7">
+      <h3 class="panel-content-title">Motion Identity Draft for Weekend Festival</h3>
+      <p class="panel-content-subtitle">Animated visual system and keyframes.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Motion Identity Draft for Weekend Festival placeholder image" />
+      <p class="panel-content-body">Placeholder body copy for logo motion tests, transition principles, and timing decisions used across digital posters and social clips.</p>
+    </template>
+    <template id="project-panel-8">
+      <h3 class="panel-content-title">Ecommerce Prototype for Handmade Furniture Studio</h3>
+      <p class="panel-content-subtitle">Commerce flow with a curated presentation.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Ecommerce Prototype for Handmade Furniture Studio placeholder image" />
+      <p class="panel-content-body">Placeholder body copy focused on browsing behavior, product detail pages, and checkout structure for a premium shopping experience.</p>
+    </template>
+    <template id="project-panel-9">
+      <h3 class="panel-content-title">Packaging Exploration for Seasonal Tea Collection</h3>
+      <p class="panel-content-subtitle">Material and label composition studies.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Packaging Exploration for Seasonal Tea Collection placeholder image" />
+      <p class="panel-content-body">Placeholder body copy capturing dieline trials, typography options, and color relationships tested across the collection range.</p>
+    </template>
+    <template id="project-panel-10">
+      <h3 class="panel-content-title">Wayfinding Concept for Community Art Campus</h3>
+      <p class="panel-content-subtitle">Navigation system for public space.</p>
+      <img class="panel-content-image" src="case-study-5.jpg" alt="Wayfinding Concept for Community Art Campus placeholder image" />
+      <p class="panel-content-body">Placeholder body copy detailing signage hierarchy, icon rules, and placement logic to improve orientation across the site.</p>
+    </template>
+  </div>
 
-    const render = Render.create({
-      element: worldEl,
-      engine,
-      options: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        wireframes: false,
-        background: "transparent"
-      }
-    });
+  <aside class="case-panel" id="casePanel" aria-hidden="true">
+    <div class="case-panel-inner">
+      <button class="panel-back" id="panelBackButton" type="button">Back</button>
+      <div class="panel-content" id="panelContent"></div>
+    </div>
+  </aside>
 
-    Render.run(render);
-    const runner = Runner.create();
-    Runner.run(runner, engine);
-
-    const mouse = Mouse.create(render.canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse,
-      constraint: {
-        stiffness: 0.2,
-        render: { visible: false }
-      }
-    });
-    Composite.add(engine.world, mouseConstraint);
-    render.mouse = mouse;
-
-    let bounds = [];
-
-    function buildBounds() {
-      if (bounds.length) {
-        Composite.remove(engine.world, bounds);
-      }
-
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const t = 80;
-
-      bounds = [
-        Bodies.rectangle(w / 2, h + t / 2, w, t, { isStatic: true, restitution: 0.8 }),
-        Bodies.rectangle(-t / 2, h / 2, t, h * 2, { isStatic: true, restitution: 0.8 }),
-        Bodies.rectangle(w + t / 2, h / 2, t, h * 2, { isStatic: true, restitution: 0.8 })
-      ];
-
-      Composite.add(engine.world, bounds);
-    }
-
-    function createCharacterPng(char) {
-      const size = 96;
-      const c = document.createElement("canvas");
-      c.width = size;
-      c.height = size;
-      const ctx = c.getContext("2d");
-
-      ctx.clearRect(0, 0, size, size);
-      ctx.fillStyle = "#f99a0a";
-      ctx.strokeStyle = "#000000";
-      ctx.lineWidth = 3;
-      ctx.font = "bold 96px Georgia, serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.strokeText(char, size / 2, size / 2 + 3);
-      ctx.fillText(char, size / 2, size / 2 + 3);
-
-      return c.toDataURL("image/png");
-    }
-
-    function dropCharacter(char) {
-      const texture = createCharacterPng(char);
-      const size = 56;
-      const x = 40 + Math.random() * (window.innerWidth - 80);
-
-      const body = Bodies.rectangle(x, -40, size, size, {
-        restitution: 0.72,
-        friction: 0.15,
-        frictionAir: 0.006,
-        density: 0.0025,
-        render: {
-          sprite: {
-            texture,
-            xScale: size / 96,
-            yScale: size / 96
-          }
-        }
-      });
-
-      Composite.add(engine.world, body);
-    }
-
-    inputEl.addEventListener("input", (event) => {
-      const value = event.target.value;
-      if (!value) {
-        return;
-      }
-      dropCharacter(value[0]);
-      event.target.value = "";
-    });
-
-    window.addEventListener("resize", () => {
-      render.canvas.width = window.innerWidth;
-      render.canvas.height = window.innerHeight;
-      render.options.width = window.innerWidth;
-      render.options.height = window.innerHeight;
-      buildBounds();
-    });
-
-    buildBounds();
-    inputEl.focus();
-  </script>
+  <script src="oscaringhamdesign.js"></script>
 </body>
 </html>
