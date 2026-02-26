@@ -1,0 +1,635 @@
+/* Fonts */
+@font-face {
+  font-family: "Caslon Ionic";
+  src: url("CaslonIonic-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300 400;
+}
+
+@font-face {
+  font-family: "Caslon Ionic";
+  src: url("CaslonIonic-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Caslon Doric";
+  src: url("CaslonDoric-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Tokens */
+:root {
+  --text: #333333;
+  --dark: #000000;
+  --light: #ffffff;
+  --divider: #666666;
+
+  --frame-width: 360px;
+  --content-width: 328px;
+  --action-bottom-space: 180px;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Caslon Ionic", "Times New Roman", serif;
+  color: var(--text);
+}
+
+/* Layout */
+.onboarding {
+  position: relative;
+  width: 100vw;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.slides-track {
+  display: flex;
+  width: 500%;
+  min-height: 100dvh;
+  transition: transform 280ms ease;
+  touch-action: pan-y;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  min-height: 100dvh;
+}
+
+.slide-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: min(var(--frame-width), 100%);
+  padding: 16px 0 var(--action-bottom-space);
+}
+
+/* Slide: Welcome */
+.welcome-slide {
+  background: #aad9ff;
+}
+
+.hero-image {
+  display: block;
+  width: min(var(--frame-width), 100%);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: var(--content-width);
+}
+
+.welcome-message h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.welcome-message p {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+}
+
+.download-links {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  width: var(--content-width);
+  height: 42.995px;
+}
+
+.store-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border-radius: 7px;
+  background: transparent;
+  text-decoration: none;
+}
+
+.store-badge {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Slide: Journalism */
+.journalism-slide {
+  background: #fdfdd5;
+}
+
+.journalism-heading {
+  width: var(--content-width);
+  margin: 0;
+  padding: 24px 0 8px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 29px;
+}
+
+.journalism-main {
+  justify-content: flex-start;
+  gap: 18px;
+  padding-top: 10px;
+}
+
+.journalism-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: var(--content-width);
+}
+
+.feature-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+  padding: 0 4px;
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 4px;
+  padding: 12px;
+  border-radius: 100px;
+}
+
+.feature-icon img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.icon-orange { background: #f99a0a; }
+.icon-purple { background: #b5b0d0; }
+.icon-red { background: #ff5d66; }
+.icon-green { background: #a0d0c0; }
+.icon-yellow { background: #e0e00a; }
+.icon-blue { background: #aad9ff; }
+
+.row-divider {
+  width: 1px;
+  height: 148px;
+  background: var(--divider);
+}
+
+.feature-card h2 {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.feature-card p {
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  text-align: center;
+  font-family: "Caslon Doric", "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.feature-divider {
+  width: 136px;
+  height: 1px;
+  margin-top: 16px;
+  background: var(--divider);
+}
+
+/* Slide: Newsletters */
+.newsletters-slide {
+  background: #ffffff;
+}
+
+.benefits-slide {
+  background: #fedde1;
+}
+
+.newsletters-main {
+  justify-content: flex-start;
+  gap: 24px;
+  padding-top: 32px;
+}
+
+.newsletters-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: var(--content-width);
+}
+
+.newsletters-text h2 {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 29px;
+}
+
+.newsletters-text p {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+}
+
+.newsletter-scroll-wrap {
+  position: relative;
+  width: var(--content-width);
+  height: 506px;
+}
+
+.newsletter-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: var(--content-width);
+  height: 506px;
+  padding-bottom: 104px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.newsletter-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.newsletter-gradient {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  height: 82px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  pointer-events: none;
+}
+
+.newsletter-card {
+  width: 100%;
+  padding: 8px 8px 16px;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.newsletter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.newsletter-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 8px;
+}
+
+.newsletter-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.newsletter-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.newsletter-name {
+  margin: 0;
+  font-family: "Caslon Ionic", "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.newsletter-card p {
+  margin: 0;
+  font-family: "Caslon Doric", "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.select-indicator {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  color: var(--text);
+  font-family: "Caslon Ionic", "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.select-indicator .tick {
+  display: none;
+}
+
+.select-indicator .tick img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.newsletter-card.is-selected .select-indicator {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--light);
+}
+
+.newsletter-card.is-selected .select-indicator .plus {
+  display: none;
+}
+
+.newsletter-card.is-selected .select-indicator .tick {
+  display: inline;
+}
+
+/* Slide: Subscription Benefits */
+.benefits-main {
+  justify-content: flex-start;
+  gap: 16px;
+  padding-top: 32px;
+}
+
+.benefits-image {
+  display: block;
+  width: min(var(--frame-width), 100%);
+  height: 320px;
+  margin-top: auto;
+  object-fit: cover;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: var(--content-width);
+}
+
+.benefits-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.benefits-item-top {
+  align-items: flex-start;
+}
+
+.benefits-tick {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.benefits-tick-tall {
+  height: 33px;
+}
+
+.benefits-tick-taller {
+  height: 34px;
+}
+
+.benefits-tick-short {
+  height: 22px;
+}
+
+.benefits-item p {
+  flex: 1 0 0;
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 21px;
+}
+
+.benefits-item p strong {
+  font-weight: 700;
+}
+
+.benefits-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.benefits-text h2 {
+  width: var(--content-width);
+  margin: 0;
+  color: var(--text);
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 29px;
+}
+
+/* Slide: PDF Reader */
+.pdf-slide {
+  background: #e0e0f0;
+}
+
+.pdf-main {
+  justify-content: flex-start;
+  gap: 24px;
+  padding-top: 32px;
+}
+
+.pdf-image {
+  display: block;
+  width: min(var(--frame-width), 100%);
+  height: 420px;
+  margin-top: auto;
+  object-fit: contain;
+}
+
+.pdf-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: var(--content-width);
+}
+
+.pdf-text h2 {
+  width: 100%;
+  margin: 0;
+  color: var(--text);
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 29px;
+}
+
+.pdf-text p {
+  width: 100%;
+  margin: 0;
+  color: var(--text);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+}
+
+/* Persistent Actions */
+.actions {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: min(var(--frame-width), 100%);
+  padding: 24px 16px;
+  transform: translateX(-50%);
+}
+
+.next-btn,
+.skip-btn {
+  width: var(--content-width);
+  font-family: "Caslon Ionic", "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.next-btn {
+  height: 48px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--dark);
+  color: var(--light);
+}
+
+.skip-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--dark);
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dot.active {
+  background: var(--dark);
+}
+
+/* Responsive */
+@media (max-width: 360px) {
+  .welcome-message,
+  .download-links,
+  .journalism-grid,
+  .journalism-heading,
+  .newsletters-text,
+  .newsletter-scroll-wrap,
+  .newsletter-scroll,
+  .benefits-list,
+  .benefits-text h2,
+  .pdf-text,
+  .next-btn,
+  .skip-btn {
+    width: calc(100% - 32px);
+  }
+
+  .feature-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .row-divider {
+    display: none;
+  }
+}

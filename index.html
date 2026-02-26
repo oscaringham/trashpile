@@ -6,7 +6,7 @@
   <title>Falling Character PNG Physics</title>
   <style>
     :root {
-      --bg: #f99a0a;
+      --bg-image: url("./IMG_9B936D90F99D-1.jpeg");
       --panel: rgba(255, 255, 255, 0.9);
       --text: #181818;
     }
@@ -22,29 +22,44 @@
       margin: 0;
       overflow: hidden;
       font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-      background: var(--bg);
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: var(--text);
     }
 
     #ui {
       position: fixed;
-      top: 16px;
-      left: 16px;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 10;
-      background: var(--panel);
+      background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.2);
-      border-radius: 12px;
+      border-radius: 0;
       padding: 12px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      max-width: min(90vw, 480px);
+      width: 100%;
+      max-width: none;
     }
 
     #charInput {
+      display: block;
       width: 100%;
+      margin: 0 auto;
       font-size: 18px;
       padding: 10px 12px;
-      border-radius: 8px;
+      border-radius: 0;
+      text-align: center;
+      background-color: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.35);
+    }
+
+    #charInput:focus {
+      outline: none;
+      border-color: #f99a0a;
+      box-shadow: 0 0 0 2px rgba(249, 154, 10, 0.2);
     }
 
     #hint {
@@ -72,13 +87,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
   <script>
-    const { Engine, Render, Runner, Bodies, Composite } = Matter;
+    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
 
     const worldEl = document.getElementById("world");
     const inputEl = document.getElementById("charInput");
 
     const engine = Engine.create();
-    engine.world.gravity.y = 1.1;
+    engine.world.gravity.y = 1.5;
 
     const render = Render.create({
       element: worldEl,
@@ -94,6 +109,17 @@
     Render.run(render);
     const runner = Runner.create();
     Runner.run(runner, engine);
+
+    const mouse = Mouse.create(render.canvas);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: { visible: false }
+      }
+    });
+    Composite.add(engine.world, mouseConstraint);
+    render.mouse = mouse;
 
     let bounds = [];
 
@@ -123,10 +149,10 @@
       const ctx = c.getContext("2d");
 
       ctx.clearRect(0, 0, size, size);
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#f99a0a";
       ctx.strokeStyle = "#000000";
       ctx.lineWidth = 3;
-      ctx.font = "bold 72px Trebuchet MS, Segoe UI, sans-serif";
+      ctx.font = "bold 96px Georgia, serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.strokeText(char, size / 2, size / 2 + 3);
