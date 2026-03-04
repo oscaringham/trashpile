@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "Caslon Ionic";
+  src: url("./CaslonIonic-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Caslon Ionic";
+  src: url("./CaslonIonic-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Caslon Doric";
+  src: url("./CaslonDoric-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --canvas: #ffffff;
+  --pair-1-text: #000000;
+  --pair-1-bg: #e0e00a;
+  --pair-2-text: #ffffff;
+  --pair-2-bg: #000000;
+  --pair-3-text: #e0e00a;
+  --pair-3-bg: #497099;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  min-height: 100vh;
+}
+
+.layout {
+  width: min(1400px, 96vw);
+  margin: 0 auto;
+  padding: 2.25rem 0;
+}
+
+.brick-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+}
+
+.brick-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  line-height: 1;
+}
+
+.brick-row + .brick-row {
+  margin-top: -0.04em;
+}
+
+.brick-row.is-offset {
+  padding-left: clamp(0.45rem, 2vw, 1.5rem);
+}
+
+.word-brick {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: calc((0.24rem + (var(--scale) * 0.32rem)) * var(--anim-scale, 1));
+  padding: 0.15em 0.28em 0.08em;
+  border-radius: 0;
+  letter-spacing: 0.012em;
+  margin: 0;
+  box-shadow: none;
+  will-change: font-size;
+}
+
+.word-brick.font-ionic {
+  font-family: "Caslon Ionic", serif;
+  font-weight: 700;
+}
+
+.word-brick.font-doric {
+  font-family: "Caslon Doric", sans-serif;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.word-brick.pair-1 {
+  color: var(--pair-1-text);
+  background: var(--pair-1-bg);
+}
+
+.word-brick.pair-2 {
+  color: var(--pair-2-text);
+  background: var(--pair-2-bg);
+}
+
+.word-brick.pair-3 {
+  color: var(--pair-3-text);
+  background: var(--pair-3-bg);
+}
+
+@media (max-width: 680px) {
+  .layout {
+    padding: 1.2rem 0;
+  }
+
+  .brick-row {
+    gap: 0;
+  }
+
+  .brick-row.is-offset {
+    padding-left: 0.5rem;
+  }
+
+  .word-brick {
+    font-size: calc((0.15rem + (var(--scale) * 0.15rem)) * var(--anim-scale, 1));
+  }
+}
