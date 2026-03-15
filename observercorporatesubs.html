@@ -6,7 +6,7 @@
   <title>Observer Corporate Subscriptions</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Caslon Ionic, serif;
       margin: 24px;
       line-height: 1.5;
     }
@@ -15,13 +15,13 @@
       border-collapse: collapse;
     }
     th, td {
-      border: 1px solid #ccc;
+      border: 1px solid #000000;
       vertical-align: top;
       padding: 12px;
       text-align: left;
     }
     th {
-      background: #f5f5f5;
+      background: #f99a0a;
     }
     ul {
       margin: 0;
@@ -30,43 +30,6 @@
     }
     li + li {
       margin-top: 8px;
-    }
-    .mobile-tabs {
-      display: none;
-    }
-    .tab-buttons {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .tab-button {
-      flex: 1;
-      border: 1px solid #ccc;
-      background: #fff;
-      padding: 10px 12px;
-      font-size: 14px;
-      text-align: center;
-      cursor: pointer;
-    }
-    .tab-button.active {
-      background: #f5f5f5;
-      font-weight: 700;
-    }
-    .tab-panel {
-      display: none;
-      border: 1px solid #ccc;
-      padding: 12px;
-    }
-    .tab-panel.active {
-      display: block;
-    }
-    @media (max-width: 768px) {
-      table {
-        display: none;
-      }
-      .mobile-tabs {
-        display: block;
-      }
     }
   </style>
 </head>
@@ -107,52 +70,5 @@
       </tr>
     </tbody>
   </table>
-  <div class="mobile-tabs">
-    <div class="tab-buttons">
-      <button class="tab-button active" type="button" data-tab="academic">Academic institutions &amp; charities</button>
-      <button class="tab-button" type="button" data-tab="corporates">Corporates</button>
-    </div>
-    <div id="tab-academic" class="tab-panel active">
-      <ul>
-        <li>• Unlimited access to our journalism: a curated digital experience bringing our sensemaking “Sunday” spirit of deep analysis to every day of the week.</li></br>
-        <li>• Editorial-led, unrivalled coverage of society, culture and the arts: the definitive word on culture, the arts, policy and public life, editorially curated and delivered to your inbox every day.</li></br>
-        <li>• Our subscriber-only app: a beautifully designed space to read, watch and listen on the move.</li></br>
-        <li>• Subscriber-only newsletters: our daily newsletters sharing our must-reads, sensemaker headlines, news from the boardroom and the best of our food writing and reviews of the week.</li></br>
-        <li>• Hear it first: early and advert-free access to the daily Sensemaker podcast and award-winning investigation series.</li></br>
-        <li>• Live events: join us in our newsroom for our annual live events programme featuring authors, campaigners and thought leaders for a relaxed evening of candid conversations.</li></br>
-        <li>• Beyond the newsroom: exclusive offers from partners – such as Mubi and iEscape – and our partnered events, such as Sunday Papers Live, Hay Festival and more.</li></br>
-      </ul>
-    </div>
-    <div id="tab-corporates" class="tab-panel">
-      <ul>
-        <li>• Unlimited access to our journalism: a curated digital experience bringing our sensemaking “Sunday” spirit of deep analysis to every day of the week.</li></br>
-        <li>• Editorial-led, unrivalled coverage of society, culture and the arts: the definitive word on culture, the arts, policy and public life, editorially curated and delivered to your inbox every day.</li></br>
-        <li>• Our subscriber-only app: a beautifully designed space to read, watch and listen on the move.</li></br>
-        <li>• Subscriber-only newsletters: our daily newsletters sharing our must-reads, sensemaker headlines, news from the boardroom and the best of our food writing and reviews of the week.</li></br>
-        <li>• Hear it first: early and advert-free access to the daily Sensemaker podcast and award-winning investigation series.</li></br>
-        <li>• Live events: join us in our newsroom for our annual live events programme featuring authors, campaigners and thought leaders for a relaxed evening of candid conversations.</li></br>
-        <li>• Beyond the newsroom: exclusive offers from partners – such as Mubi and iEscape – and our partnered events, such as Sunday Papers Live, Hay Festival and more.</li></br>
-        <li>• Business roundtables: opportunity for a named member of your senior team to join our fortnightly editorially chaired roundtables with leaders from across business, politics and society hosted in our newsroom.</li></br>
-        <li>• Invitation-only editorial events: opportunity for a named member of your senior team to join our quarterly forums and dinners.</li></br>
-      </ul>
-    </div>
-  </div>
-  <script>
-    const tabButtons = document.querySelectorAll(".tab-button");
-    const tabPanels = {
-      academic: document.getElementById("tab-academic"),
-      corporates: document.getElementById("tab-corporates")
-    };
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        tabButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-
-        Object.values(tabPanels).forEach((panel) => panel.classList.remove("active"));
-        tabPanels[button.dataset.tab].classList.add("active");
-      });
-    });
-  </script>
 </body>
 </html>
