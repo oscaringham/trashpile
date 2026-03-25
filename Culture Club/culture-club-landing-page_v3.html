@@ -30,7 +30,6 @@
         #cc-bubble-layer {
             position: absolute;
             inset: 0;
-            z-index: 0;
             pointer-events: none;
         }
 
@@ -84,9 +83,13 @@
             var h = widget.offsetHeight || 280;
 
             for (var i = 0; i < count; i++) {
+                var colour = colours[i % colours.length];
                 var el = document.createElement('div');
                 el.className = 'cc-bubble';
-                el.style.background = colours[i % colours.length];
+                el.style.background = colour;
+                var redColours = ['#A93949','#FF5D66'];
+                var purpleColours = ['#857BB0','#B5B0D0'];
+                el.style.zIndex = redColours.indexOf(colour) > -1 ? '2' : '0';
                 layer.appendChild(el);
 
                 (function(elem, ox, oy, rx, ry, ph, sp) {
@@ -99,10 +102,10 @@
                     requestAnimationFrame(tick);
                 }(
                     el,
-                    ((5  + (i * 13) % 90) / 100) * w,
-                    ((10 + (i * 17) % 80) / 100) * h,
-                    30 + (i * 23) % 80,
-                    15 + (i * 17) % 40,
+                    ((15 + (i * 13) % 70) / 100) * w,
+                    ((20 + (i * 17) % 60) / 100) * h,
+                    20 + (i * 13) % 40,
+                    10 + (i * 9)  % 20,
                     (i / count) * Math.PI * 2,
                     0.00008 + (i * 0.000012)
                 ));
