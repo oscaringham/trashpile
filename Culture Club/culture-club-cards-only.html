@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Club — Cards</title>
+    <style>
+        @font-face {
+            font-family: 'CaslonIonic';
+            src: url('../CaslonIonic-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'CaslonIonic';
+            src: url('../CaslonIonic-Bold.otf') format('opentype');
+            font-weight: 700;
+        }
+
+        #cc-widget {
+            font-family: 'CaslonIonic', serif;
+            background: #ffffff;
+            position: relative;
+            box-sizing: border-box;
+            overflow: visible;
+        }
+
+        #cc-widget * {
+            box-sizing: border-box;
+        }
+
+        /* ── Cards ── */
+        #cc-widget .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            overflow: visible;
+            justify-items: center;
+        }
+
+        #cc-widget .card-wrap {
+            perspective: 1000px;
+            height: 380px;
+            width: 100%;
+            max-width: 480px;
+            overflow: visible;
+        }
+
+        #cc-widget .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        #cc-widget .card-wrap.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        #cc-widget .card-front,
+        #cc-widget .card-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Front */
+        #cc-widget .card-front {
+            padding: 24px;
+        }
+
+        #cc-widget .card-front .logo-wrap {
+            height: 36px;
+            display: flex;
+            align-items: center;
+        }
+
+        #cc-widget .card-front .logo {
+            height: 100%;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            object-position: left center;
+        }
+
+        #cc-widget .card-byway .logo {
+            height: 70%;
+        }
+
+        #cc-widget .card-front .offer-headline {
+            font-weight: 400;
+            font-size: 44px;
+            line-height: 1.1;
+            margin: 20px 0 8px;
+            padding: 0;
+        }
+
+        #cc-widget .card-hay .offer-headline {
+            font-size: 32px;
+        }
+
+        #cc-widget .card-front .offer-sub {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: auto;
+            padding: 0;
+        }
+
+        #cc-widget .card-front .card-cta {
+            display: block;
+            margin-top: auto;
+            padding: 14px;
+            text-align: center;
+            font-family: 'CaslonIonic', serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: #000;
+            border: none;
+            width: calc(100% + 48px);
+            margin-left: -24px;
+            margin-bottom: -24px;
+        }
+
+        /* Back */
+        #cc-widget .card-back {
+            transform: rotateY(180deg);
+            padding: 28px;
+            color: #000;
+        }
+
+        #cc-widget .card-back h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            padding: 0;
+        }
+
+        #cc-widget .card-back ul {
+            list-style: none;
+            flex: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        #cc-widget .card-back ul li {
+            font-size: 15px;
+            font-weight: 400;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.15);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 0;
+        }
+
+        #cc-widget .card-back ul li::before {
+            content: '✓';
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        #cc-widget .card-back .card-cta-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 12px 20px;
+            text-align: center;
+            font-family: 'CaslonIonic', serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #000;
+            border: none;
+            width: 100%;
+            text-decoration: none;
+            border-radius: 999px;
+        }
+
+        #cc-widget .card-back .card-cta-back svg {
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 940px) {
+            #cc-widget .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Per-card colours */
+        #cc-widget .card-gallery               { background: #FFB2B2; }
+        #cc-widget .card-gallery .card-cta     { background: #FF5D66; }
+        #cc-widget .card-gallery.card-back     { background: #FFB2B2; }
+        #cc-widget .card-gallery .card-cta-back{ background: #FF5D66; }
+
+        #cc-widget .card-byway                 { background: #C0E9DD; }
+        #cc-widget .card-byway .card-cta       { background: #A0D0C0; }
+        #cc-widget .card-byway.card-back       { background: #C0E9DD; }
+        #cc-widget .card-byway .card-cta-back  { background: #A0D0C0; }
+
+        #cc-widget .card-hay                   { background: #E0E0F0; }
+        #cc-widget .card-hay .card-cta         { background: #B5B0D0; }
+        #cc-widget .card-hay.card-back         { background: #E0E0F0; }
+        #cc-widget .card-hay .card-cta-back    { background: #B5B0D0; }
+    </style>
+</head>
+<body>
+
+    <div id="cc-widget">
+        <div class="cards">
+
+            <!-- National Gallery -->
+            <div class="card-wrap" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-front card-gallery">
+                        <div class="logo-wrap"><img class="logo" src="https://cdn-stg.slowdownwiseup.co.uk/media/original_images/National_Gallery_London_logo.png" alt="The National Gallery"></div>
+                        <div class="offer-headline">2 for 1 tickets</div>
+                        <div class="offer-sub">to Zurbaran at the National Gallery</div>
+                        <button class="card-cta">Click to find out more</button>
+                    </div>
+                    <div class="card-back card-gallery">
+                        <h3>National Gallery — what's included</h3>
+                        <ul>
+                            <li>Access to the Zurbaran exhibition - a giant in the history of Spanish art</li>
+                            <li>Save £22 (peak) and £20 (off peak) on exhibition tickets</li>
+                            <li>Valid from 12-2PM every Wednesday</li>
+                            <li>Offer available from 2 May until 9 August</li>
+                        </ul>
+                        <a href="https://observer.co.uk/subscriptions/offers/article/exclusive-observer-subscriber-benefit-enjoy-100-off-handpicked-hideaways-and-boutique-hotels-with-i-escape" class="card-cta-back">Go to offer <svg viewBox="0 0 25 25" width="16" height="16" role="img"><path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z" fill="#000000"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Byway -->
+            <div class="card-wrap" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-front card-byway">
+                        <div class="logo-wrap"><img class="logo" src="https://cdn-stg.slowdownwiseup.co.uk/media/original_images/byway-logotype-black.png" alt="Byway"></div>
+                        <div class="offer-headline">£100 off</div>
+                        <div class="offer-sub">cultural tours by rail with Byway</div>
+                        <button class="card-cta">Click to find out more</button>
+                    </div>
+                    <div class="card-back card-byway">
+                        <h3>Byway — what's included</h3>
+                        <ul>
+                            <li>Premium, slow travel holidays by rail highlighting the richness of European arts and culture</li>
+                            <li>Curated by The Observer's lifestyle team</li>
+                            <li>Save £100 on trips booked with Byway before the end of 2026</li>
+                        </ul>
+                        <a href="https://observer.co.uk/subscriptions/offers/article/exclusive-observer-subscriber-benefit-enjoy-100-off-handpicked-hideaways-and-boutique-hotels-with-i-escape" class="card-cta-back">Go to offer <svg viewBox="0 0 25 25" width="16" height="16" role="img"><path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z" fill="#000000"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hay Festival -->
+            <div class="card-wrap" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-front card-hay">
+                        <div class="logo-wrap"><img class="logo" src="https://cdn-stg.slowdownwiseup.co.uk/media/original_images/Hay_Festival_UK-logo.png" alt="Hay Festival"></div>
+                        <div class="offer-headline">Complimentary tickets</div>
+                        <div class="offer-sub">to Hay Festival</div>
+                        <button class="card-cta">Click to find out more</button>
+                    </div>
+                    <div class="card-back card-hay">
+                        <h3>Hay Festival — what's included</h3>
+                        <ul>
+                            <li>Join Observer journalists at Hay Festival</li>
+                            <li>Complimentary tickets to Observer hosted events</li>
+                            <li>Limited tickets available</li>
+                        </ul>
+                        <a href="https://observer.co.uk/subscriptions/offers/article/exclusive-observer-subscriber-benefit-enjoy-100-off-handpicked-hideaways-and-boutique-hotels-with-i-escape" class="card-cta-back">Go to offer <svg viewBox="0 0 25 25" width="16" height="16" role="img"><path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z" fill="#000000"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.cards -->
+    </div><!-- /#cc-widget -->
+
+</body>
+</html>
