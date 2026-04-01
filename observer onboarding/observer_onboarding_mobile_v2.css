@@ -484,7 +484,7 @@ body {
 .benefits-image {
   display: block;
   width: min(var(--frame-width), 100%);
-  height: max(150px, min(320px, calc(100dvh - 430px)));
+  height: max(120px, min(320px, calc(100dvh - 480px)));
   object-fit: cover;
 }
 
@@ -570,7 +570,7 @@ body {
 .pdf-image {
   display: block;
   width: min(var(--frame-width), 100%);
-  height: max(200px, min(420px, calc(100dvh - 290px)));
+  height: max(200px, min(420px, calc(100dvh - 340px)));
   object-fit: contain;
 }
 
@@ -689,6 +689,11 @@ body {
   .journalism-grid {
     gap: 4px;
   }
+
+  .benefits-image {
+    max-height: 180px;
+  }
+
 }
 
 /* Desktop */
