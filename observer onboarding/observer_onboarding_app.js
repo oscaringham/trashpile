@@ -5,7 +5,7 @@ const dots = Array.from(document.querySelectorAll('.pagination .dot'));
 const newsletterCards = Array.from(document.querySelectorAll('.newsletter-card'));
 
 let currentIndex = 0;
-const totalSlides = 5;
+const totalSlides = 4;
 const finalSlideIndex = totalSlides - 1;
 
 function setSlide(index) {

@@ -60,7 +60,7 @@ body {
 
 .slides-track {
   display: flex;
-  width: 500%;
+  width: 400%;
   min-height: 100dvh;
   transition: transform 280ms ease;
   touch-action: pan-y;
@@ -84,94 +84,6 @@ body {
   gap: 16px;
   width: min(var(--frame-width), 100%);
   padding: 16px 0 var(--action-bottom-space);
-}
-
-/* Slide: Welcome */
-.welcome-slide {
-  background: #aad9ff;
-}
-
-.welcome-slide .slide-main {
-  justify-content: center;
-  gap: 12px;
-}
-
-.hero-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: min(36dvh, 280px);
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-}
-
-.welcome-message {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: var(--content-width);
-}
-
-.welcome-message h1 {
-  margin: 0;
-  text-align: center;
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 34px;
-}
-
-.welcome-message p {
-  margin: 0;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 26px;
-}
-
-.download-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.qr-wrap {
-  display: none;
-}
-
-.qr-code {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.store-badges {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  height: 48px;
-}
-
-.store-btn {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  height: 100%;
-  padding: 0;
-  border-radius: 7px;
-  background: transparent;
-  text-decoration: none;
-}
-
-.store-badge {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 /* Slide: Journalism */
@@ -704,78 +616,6 @@ body {
     --action-bottom-space: 120px;
   }
 
-  /* Slide: Welcome — image left, message + QR right */
-  .welcome-slide .slide-main {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 64px;
-    width: min(1360px, calc(100% - 80px));
-    padding-top: 40px;
-    padding-bottom: 40px;
-    max-height: none;
-  }
-
-  .hero-image {
-    flex: 0 0 auto;
-    width: min(667px, 50%);
-    height: auto;
-    max-height: none;
-    aspect-ratio: 320 / 237;
-    object-fit: cover;
-  }
-
-  .welcome-message {
-    flex: 0 0 auto;
-    width: min(586px, 45%);
-    gap: 24px;
-  }
-
-  .welcome-message h1 {
-    text-align: left;
-    font-size: 54px;
-    line-height: 64px;
-  }
-
-  .welcome-message p {
-    text-align: left;
-    font-size: 20px;
-    line-height: 26px;
-  }
-
-  .download-links {
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    width: auto;
-    height: auto;
-  }
-
-  .qr-wrap {
-    display: flex;
-    flex-shrink: 0;
-    width: 140px;
-    height: 140px;
-  }
-
-  .store-badges {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    gap: 8px;
-  }
-
-  .store-btn {
-    flex: none;
-    width: auto;
-    height: 52px;
-  }
-
-  .store-badge {
-    width: auto;
-    height: 100%;
-  }
-
   /* Slide: Journalism — 2 rows of 3 */
   .journalism-slide .slide-main {
     width: min(1060px, 100%);
@@ -1003,8 +843,6 @@ body {
 
 /* Small mobile */
 @media (max-width: 360px) {
-  .welcome-message,
-  .download-links,
   .journalism-grid,
   .journalism-heading,
   .newsletters-text,
