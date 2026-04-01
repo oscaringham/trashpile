@@ -608,6 +608,118 @@ body {
 
 }
 
+/* Tablet */
+@media (min-width: 600px) and (max-width: 900px) {
+  :root {
+    --frame-width: 560px;
+    --content-width: 520px;
+    --action-bottom-space: clamp(140px, 20dvh, 190px);
+  }
+
+  /* Slide: Journalism */
+  .journalism-main {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .journalism-heading {
+    font-size: 28px;
+    line-height: 36px;
+    padding-top: 0;
+  }
+
+  .journalism-grid {
+    gap: 20px;
+  }
+
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    padding: 14px;
+  }
+
+  .feature-icon img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .feature-card h2 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .feature-card p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  /* Slide: Newsletters */
+  .newsletters-main {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .newsletters-text h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .newsletters-text p {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .newsletter-name {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .newsletter-card p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  /* Slide: Benefits */
+  .benefits-main {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .benefits-text h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .benefits-item p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .benefits-image {
+    height: max(160px, min(400px, calc(100dvh - 460px)));
+  }
+
+  /* Slide: PDF */
+  .pdf-main {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .pdf-text h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .pdf-text p {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .pdf-image {
+    height: max(250px, min(520px, calc(100dvh - 320px)));
+  }
+}
+
 /* Desktop */
 @media (min-width: 901px) {
   :root {
