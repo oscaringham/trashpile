@@ -775,10 +775,12 @@ body {
   .journalism-slide .slide-main {
     width: min(1060px, 100%);
     justify-content: center;
+    padding-top: 0;
   }
 
   .journalism-heading {
-    width: min(1060px, 100%);
+    width: 100%;
+    padding-top: 0;
     font-size: 28px;
     line-height: 36px;
     text-align: center;
@@ -838,6 +840,10 @@ body {
   }
 
   /* Slide: Newsletters — 3-column explicit grid */
+  .newsletters-slide .slide-main {
+    justify-content: center;
+  }
+
   .newsletter-scroll-wrap {
     width: 788px;
     height: auto;
