@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Observer Onboarding</title>
+  <link rel="stylesheet" href="observer_onboarding_app.css" />
+</head>
+<body>
+  <main class="onboarding" aria-label="Observer onboarding">
+    <div class="slides-track" id="slidesTrack">
+      <section class="slide welcome-slide" aria-label="01 Welcome">
+        <div class="slide-main">
+          <img
+            class="hero-image"
+            src="onboarding_welcome_image.png"
+            alt="Observer app preview"
+          />
+
+          <div class="welcome-message">
+            <h1>Welcome to your new subscription</h1>
+            <p>
+              Trusted journalism, expert recipes, award-winning podcasts, and
+              signature puzzles - all in one place, exclusively for subscribers
+            </p>
+
+            <div class="download-links" aria-label="Download links">
+              <div class="qr-wrap">
+                <img
+                  class="qr-code"
+                  src="Observer app download QR code.png"
+                  alt="Scan to download the Observer app"
+                />
+              </div>
+              <div class="store-badges">
+                <a class="store-btn" href="#" aria-label="Get it on Play Store">
+                  <img
+                    class="store-badge"
+                    src="GetItOnGooglePlay_Badge_Web_color_English.svg"
+                    alt="Get it on Google Play"
+                  />
+                </a>
+                <a
+                  class="store-btn"
+                  href="https://apps.apple.com/gb/app/the-observer-news-podcasts/id1441428990"
+                  aria-label="Download on the App Store"
+                >
+                  <img
+                    class="store-badge"
+                    src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                    alt="Download on the App Store"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide journalism-slide" aria-label="02 Journalism">
+        <div class="slide-main journalism-main">
+          <p class="journalism-heading">Get ready to dive into award-winning journalism</p>
+
+          <div class="journalism-grid" role="list">
+            <div class="feature-row">
+              <article class="feature-card" role="listitem">
+                <div class="feature-icon icon-orange">
+                  <img src="icon-read.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="feature-card-text">
+                  <h2>Read</h2>
+                  <p>Reporting that goes beyond the headlines</p>
+                </div>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <div class="feature-icon icon-purple">
+                  <img src="icon-listen.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="feature-card-text">
+                  <h2>Listen</h2>
+                  <p>Gripping investigations, crafted with award-winning storytelling</p>
+                </div>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <div class="feature-icon icon-red">
+                  <img src="icon-watch.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="feature-card-text">
+                  <h2>Watch</h2>
+                  <p>From our newsroom to your screen, wherever you are</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="feature-row">
+              <article class="feature-card" role="listitem">
+                <div class="feature-icon icon-green">
+                  <img src="icon-play.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="feature-card-text">
+                  <h2>Play</h2>
+                  <p>Puzzles for everyone, from beginner to expert</p>
+                </div>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <div class="feature-icon icon-yellow">
+                  <img src="icon-taste.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="feature-card-text">
+                  <h2>Taste</h2>
+                  <p>Recipes, recommendations and the stories behind them</p>
+                </div>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <div class="feature-icon icon-blue">
+                  <img src="icon-join.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="feature-card-text">
+                  <h2>Join</h2>
+                  <p>Become an Observer</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide newsletters-slide" aria-label="03 Select Newsletters">
+        <div class="slide-main newsletters-main">
+          <div class="newsletters-text">
+            <h2>Sign up to our newsletters</h2>
+            <p>Get the best of The Observer, straight to your inbox</p>
+          </div>
+
+          <div class="newsletter-scroll-wrap">
+            <div class="newsletter-scroll" id="newsletterScroll" role="list">
+              <button class="newsletter-card" style="background: #F0C8AA;" type="button" role="listitem" aria-pressed="false">
+                <div class="newsletter-row">
+                  <div class="newsletter-content">
+                    <div class="newsletter-title-row">
+                      <img class="newsletter-icon" src="icon_sensemaker.svg" alt="" aria-hidden="true" />
+                      <h2 class="newsletter-name">Daily Sensemaker</h2>
+                    </div>
+                    <p>Clear, calm analysis on the stories driving the day's news.</p>
+                  </div>
+                  <span class="select-indicator" aria-hidden="true">
+                    <span class="plus">+</span>
+                    <span class="tick"><img src="obs_icon_tick_white.svg" alt="" aria-hidden="true" /></span>
+                  </span>
+                </div>
+              </button>
+
+              <button class="newsletter-card" style="background: #F0EAE6;" type="button" role="listitem" aria-pressed="false">
+                <div class="newsletter-row">
+                  <div class="newsletter-content">
+                    <div class="newsletter-title-row">
+                      <img class="newsletter-icon" src="icon_daily.svg" alt="" aria-hidden="true" />
+                      <h2 class="newsletter-name">The Observer Daily</h2>
+                    </div>
+                    <p>The very best of our journalism, reviews and ideas – curated each day.</p>
+                  </div>
+                  <span class="select-indicator" aria-hidden="true">
+                    <span class="plus">+</span>
+                    <span class="tick"><img src="obs_icon_tick_white.svg" alt="" aria-hidden="true" /></span>
+                  </span>
+                </div>
+              </button>
+
+              <button class="newsletter-card" style="background: #E0E00A;" type="button" role="listitem" aria-pressed="false">
+                <div class="newsletter-row">
+                  <div class="newsletter-content">
+                    <div class="newsletter-title-row">
+                      <img class="newsletter-icon" src="icon-taste.svg" alt="" aria-hidden="true" />
+                      <h2 class="newsletter-name">Food Weekly</h2>
+                    </div>
+                    <p>A dispatch from The Observer's kitchen table – from Nigel Slater's recipes to interviews, features and hot tips.</p>
+                  </div>
+                  <span class="select-indicator" aria-hidden="true">
+                    <span class="plus">+</span>
+                    <span class="tick"><img src="obs_icon_tick_white.svg" alt="" aria-hidden="true" /></span>
+                  </span>
+                </div>
+              </button>
+
+              <button class="newsletter-card" style="background: #C0E9DD;" type="button" role="listitem" aria-pressed="false">
+                <div class="newsletter-row">
+                  <div class="newsletter-content">
+                    <div class="newsletter-title-row">
+                      <img class="newsletter-icon" src="icon-play.svg" alt="" aria-hidden="true" />
+                      <h2 class="newsletter-name">The Puzzle Edit</h2>
+                    </div>
+                    <p>Puzzles people and the stories behind them - trends, histories, insights and brain teasers all in one place.</p>
+                  </div>
+                  <span class="select-indicator" aria-hidden="true">
+                    <span class="plus">+</span>
+                    <span class="tick"><img src="obs_icon_tick_white.svg" alt="" aria-hidden="true" /></span>
+                  </span>
+                </div>
+              </button>
+
+              <button class="newsletter-card newsletter-card--rory" style="background: #A0D0C0;" type="button" role="listitem" aria-pressed="false">
+                <div class="newsletter-row">
+                  <div class="newsletter-content">
+                    <div class="newsletter-title-row">
+                      <h2 class="newsletter-name">Rory Smith on football</h2>
+                      <img class="rory-headshot" src="rory-smith-headshot.png" alt="Rory Smith" />
+                    </div>
+                    <p>Weekly exclusives from Rory Smith and the Observer Sport team</p>
+                  </div>
+                  <span class="select-indicator" aria-hidden="true">
+                    <span class="plus">+</span>
+                    <span class="tick"><img src="obs_icon_tick_white.svg" alt="" aria-hidden="true" /></span>
+                  </span>
+                </div>
+              </button>
+
+              <button class="newsletter-card" style="background: #AAD9FF;" type="button" role="listitem" aria-pressed="false">
+                <div class="newsletter-row">
+                  <div class="newsletter-content">
+                    <div class="newsletter-title-row">
+                      <img class="newsletter-icon" src="icon-join.svg" alt="" aria-hidden="true" />
+                      <h2 class="newsletter-name">Boardroom Sensemaker</h2>
+                    </div>
+                    <p>Weekly news analysis for business trying to meet the demands of profit, people and planet.</p>
+                  </div>
+                  <span class="select-indicator" aria-hidden="true">
+                    <span class="plus">+</span>
+                    <span class="tick"><img src="obs_icon_tick_white.svg" alt="" aria-hidden="true" /></span>
+                  </span>
+                </div>
+              </button>
+            </div>
+
+            <div class="newsletter-gradient" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide benefits-slide" aria-label="04 Subscription benefits">
+        <div class="slide-main benefits-main">
+          <div class="benefits-content">
+            <div class="benefits-text">
+              <h2>Get the most of your subscription</h2>
+            </div>
+
+            <div class="benefits-list" role="list">
+            <div class="benefits-item" role="listitem">
+              <img
+                class="benefits-tick benefits-tick-tall"
+                src="obs_icon_tick.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p>Events &amp; exclusive invitations</p>
+            </div>
+
+            <div class="benefits-item benefits-item-top" role="listitem">
+              <img
+                class="benefits-tick benefits-tick-taller"
+                src="obs_icon_tick.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p>MUBI Save 70% on great cinema for the next 6 months</p>
+            </div>
+
+            <div class="benefits-item" role="listitem">
+              <img
+                class="benefits-tick"
+                src="obs_icon_tick.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p><strong>The Observer Book Club</strong></p>
+            </div>
+
+            <div class="benefits-item" role="listitem">
+              <img
+                class="benefits-tick"
+                src="obs_icon_tick.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p><strong>Film screenings</strong></p>
+            </div>
+
+            <div class="benefits-item benefits-item-top" role="listitem">
+              <img
+                class="benefits-tick benefits-tick-short"
+                src="obs_icon_tick.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p>iEscape enjoy £100 off handpicked hideaways and boutique hotels</p>
+            </div>
+          </div>
+          </div>
+
+          <img
+            class="benefits-image"
+            src="Events_image.jpg"
+            alt="Subscription benefits preview"
+          />
+        </div>
+      </section>
+
+      <section class="slide pdf-slide" aria-label="05 PDF reader">
+        <div class="slide-main pdf-main">
+          <div class="pdf-text">
+            <h2>Read the PDF from your app</h2>
+            <p>Our newspaper in your app every Sunday/relax with the paper</p>
+          </div>
+
+          <img
+            class="pdf-image"
+            src="obs-covers-comp.png"
+            alt="PDF reader preview"
+          />
+        </div>
+      </section>
+    </div>
+
+    <section class="actions" aria-label="Actions">
+      <button class="next-btn" type="button">Next</button>
+      <button class="skip-btn" type="button">Skip</button>
+
+      <div class="pagination" aria-label="Onboarding pagination">
+        <button class="dot active" type="button" data-slide-index="0" aria-label="Go to page 1"></button>
+        <button class="dot" type="button" data-slide-index="1" aria-label="Go to page 2"></button>
+        <button class="dot" type="button" data-slide-index="2" aria-label="Go to page 3"></button>
+        <button class="dot" type="button" data-slide-index="3" aria-label="Go to page 4"></button>
+        <button class="dot" type="button" data-slide-index="4" aria-label="Go to page 5"></button>
+      </div>
+    </section>
+  </main>
+
+  <script src="observer_onboarding_app.js"></script>
+</body>
+</html>
