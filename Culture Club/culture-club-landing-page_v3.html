@@ -47,13 +47,13 @@
         .cc-content {
             position: relative;
             z-index: 1;
-            padding: 40px 80px;
+            padding: clamp(20px, 5vw, 40px) 20px;
         }
 
         #cc-widget h1 {
             font-family: 'CaslonIonic', serif;
             font-weight: 400;
-            font-size: 100px;
+            font-size: clamp(36px, 11vw, 92px);
             line-height: 1;
             letter-spacing: -0.01em;
             color: #000;
@@ -66,9 +66,7 @@
 
     <div id="cc-widget">
         <div id="cc-bubble-layer"></div>
-        <div class="cc-content">
-            <h1>Culture<br>Club</h1>
-        </div>
+        <div class="cc-content"></div>
     </div>
 
     <script>
