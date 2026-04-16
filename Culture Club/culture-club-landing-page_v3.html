@@ -144,13 +144,26 @@
 
         // Send height to parent so the iframe can resize dynamically
         function sendHeight() {
-            var h = document.documentElement.scrollHeight;
-            window.parent.postMessage({ ccWidgetHeight: h }, '*');
+            var widget = document.getElementById('cc-widget');
+            var h = widget ? widget.offsetHeight : document.documentElement.scrollHeight;
+            if (h > 0) {
+                window.parent.postMessage({ ccWidgetHeight: h }, '*');
+            }
         }
+
+        // Fire immediately, after load, after fonts, and on resize
         window.addEventListener('load', sendHeight);
         window.addEventListener('resize', sendHeight);
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function () {
+                sendHeight();
+                setTimeout(sendHeight, 200);
+            });
+        }
+
         if (typeof ResizeObserver !== 'undefined') {
-            new ResizeObserver(sendHeight).observe(document.body);
+            new ResizeObserver(sendHeight).observe(document.getElementById('cc-widget') || document.body);
         }
     </script>
 

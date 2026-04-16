@@ -4,6 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culture Club — Cards</title>
+    <script>
+        function setIframeHeight(h) {
+            var iframe = document.getElementById('cc-header-iframe');
+            if (iframe && h > 0) iframe.style.height = h + 'px';
+        }
+
+        // Cross-origin path (e.g. embedded on Observer.co.uk)
+        window.addEventListener('message', function (e) {
+            if (e.data && e.data.ccWidgetHeight) {
+                setIframeHeight(e.data.ccWidgetHeight);
+            }
+        });
+
+        // Same-origin path (local file:// or GitHub Pages)
+        document.addEventListener('DOMContentLoaded', function () {
+            var iframe = document.getElementById('cc-header-iframe');
+            if (!iframe) return;
+            iframe.addEventListener('load', function () {
+                try {
+                    var doc = iframe.contentDocument || iframe.contentWindow.document;
+                    var widget = doc.getElementById('cc-widget');
+                    var h = widget ? widget.offsetHeight : doc.documentElement.scrollHeight;
+                    setIframeHeight(h);
+
+                    // Re-measure after fonts load inside the iframe
+                    if (iframe.contentWindow.document.fonts && iframe.contentWindow.document.fonts.ready) {
+                        iframe.contentWindow.document.fonts.ready.then(function () {
+                            widget = doc.getElementById('cc-widget');
+                            setIframeHeight(widget ? widget.offsetHeight : doc.documentElement.scrollHeight);
+                        });
+                    }
+                } catch (e) {
+                    // Cross-origin — postMessage listener above handles it
+                }
+            });
+        });
+    </script>
     <style>
         @font-face {
             font-family: 'CaslonIonic';
@@ -272,7 +309,7 @@
 <body>
 
     <div id="cc-widget">
-        <iframe id="cc-header-iframe" src="https://oscaringham.github.io/trashpile/Culture%20Club/culture-club-landing-page_v3.html" width="100%" scrolling="no" frameborder="0" style="border:none; display:block; height:280px;"></iframe>
+        <iframe id="cc-header-iframe" src="culture-club-landing-page_v3.html" width="100%" scrolling="no" frameborder="0" style="border:none; display:block; height:280px;"></iframe>
         <div class="cards">
 
             <!-- National Gallery -->
@@ -487,13 +524,5 @@
 
     </div><!-- /#cc-widget -->
 
-    <script>
-        window.addEventListener('message', function (e) {
-            if (e.data && e.data.ccWidgetHeight) {
-                var iframe = document.getElementById('cc-header-iframe');
-                if (iframe) iframe.style.height = e.data.ccWidgetHeight + 'px';
-            }
-        });
-    </script>
 </body>
 </html>
