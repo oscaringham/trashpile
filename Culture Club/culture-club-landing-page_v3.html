@@ -141,6 +141,17 @@
                 ));
             }
         }());
+
+        // Send height to parent so the iframe can resize dynamically
+        function sendHeight() {
+            var h = document.documentElement.scrollHeight;
+            window.parent.postMessage({ ccWidgetHeight: h }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        if (typeof ResizeObserver !== 'undefined') {
+            new ResizeObserver(sendHeight).observe(document.body);
+        }
     </script>
 
 </body>
