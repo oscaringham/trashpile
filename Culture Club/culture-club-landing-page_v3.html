@@ -108,7 +108,7 @@
             if (!widget || !layer) return;
 
             var colours = ['#A93949','#FF5D66','#FFB2B2','#70A9D9','#AAD9FF','#857BB0','#B5B0D0'];
-            var count = 32;
+            var count = 24;
             var w = widget.offsetWidth  || 800;
             var h = widget.offsetHeight || 280;
 
@@ -142,7 +142,9 @@
             }
         }());
 
-        // Send height to parent so the iframe can resize dynamically
+        // Send height to parent so the iframe can resize dynamically.
+        // Only fires at stable layout moments — no resize/ResizeObserver listeners,
+        // which caused feedback loops when the parent changed the iframe height.
         function sendHeight() {
             var widget = document.getElementById('cc-widget');
             var h = widget ? widget.offsetHeight : document.documentElement.scrollHeight;
@@ -151,19 +153,10 @@
             }
         }
 
-        // Fire immediately, after load, after fonts, and on resize
         window.addEventListener('load', sendHeight);
-        window.addEventListener('resize', sendHeight);
 
         if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function () {
-                sendHeight();
-                setTimeout(sendHeight, 200);
-            });
-        }
-
-        if (typeof ResizeObserver !== 'undefined') {
-            new ResizeObserver(sendHeight).observe(document.getElementById('cc-widget') || document.body);
+            document.fonts.ready.then(sendHeight);
         }
     </script>
 
